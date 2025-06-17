@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ydeqjhsxdbe8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g81yg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aim0h"]
+emission_enabled = true
+emission = Color(0.726491, 0.246381, 1, 1)
+emission_energy_multiplier = 1.5
+
+[node name="LoreSausage" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00133467, -0.00509524, 0.00244284)
+mesh = SubResource("CapsuleMesh_g81yg")
+surface_material_override/0 = SubResource("StandardMaterial3D_aim0h")
