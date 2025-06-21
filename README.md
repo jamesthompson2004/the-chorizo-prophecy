@@ -55,4 +55,12 @@ Once the game grows, we’ll document the layout of:
 - /scripts/ — GDScript files
 - /assets/ — imported models, textures, etc.
 
+## 📦 Credits & Assets
+Character Models:
+Ultimate Monsters Pack by Quaternius
+Licensed under CC0 1.0 Universal
+
+Player Character:
+Mushnub (from the Blob folder in Ultimate Monsters)
+
 Let the prophecy unfold.
