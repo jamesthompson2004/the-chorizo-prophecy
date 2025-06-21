@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://i6bws3aq3mmi"]
+
+[ext_resource type="PackedScene" uid="uid://bwu2k8fuhsglm" path="res://assets/Ultimate Monsters/Blob/Mushnub.gltf" id="1_bv17i"]
+
+[node name="Mushnub" type="CharacterBody3D"]
+
+[node name="Mushnub" parent="." instance=ExtResource("1_bv17i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.377489, 0, -1.87343)
