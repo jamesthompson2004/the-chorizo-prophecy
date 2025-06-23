@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1750525846
+::res://::1750635954
+COLLABORATION.md::TextFile/TextFile::-1::1750530461::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::6924827562248269602::1750525744::1750525749::1::::<><><>0<>0<>c3ef6620a452761dab474d32ff8d643d<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-README.md::TextFile::-1::1750525810::0::1::::<><><>0<>0<><>::
+README.md::TextFile/TextFile::-1::1750530304::0::1::::<><><>0<>0<><>::
 ::res://assets/::1750128257
 ::res://assets/Ultimate Monsters/::1750128318
 ::res://assets/Ultimate Monsters/Big/::1750525757
@@ -110,3 +111,15 @@ Squidle.gltf::PackedScene/PackedScene::1552542257544594771::1750128017::17505257
 Squidle_Atlas_Monsters.png::CompressedTexture2D/CompressedTexture2D::6950555213562734990::1750128333::1750525750::1::::<><><>0<>0<>ad7f977eadaa5913679def1cd5b8750b<>res://.godot/imported/Squidle_Atlas_Monsters.png-35d1b7c919b494324d52ad5d92cd3b13.s3tc.ctex::
 Tribal.gltf::PackedScene/PackedScene::6629852486564915490::1750128017::1750525752::1::::<><><>0<>0<>ed069b15ef23a1ff6816b482de230569<>res://.godot/imported/Tribal.gltf-01a8deca94cc2996f65d5b7a4758efa5.scn::uid://bicoyvfvkcggw::::res://assets/Ultimate Monsters/Flying/Tribal_Atlas_Monsters.png
 Tribal_Atlas_Monsters.png::CompressedTexture2D/CompressedTexture2D::2952954196939895818::1750128333::1750525750::1::::<><><>0<>0<>72de6880f7f050f36919dacf9340b97b<>res://.godot/imported/Tribal_Atlas_Monsters.png-8ff4c8baf1dbb6acf417be030bed220f.s3tc.ctex::
+::res://design/::1750529564
+asset-tracking.md::TextFile/TextFile::-1::1750530298::0::1::::<><><>0<>0<><>::
+character-lore.md::TextFile/TextFile::-1::1750529485::0::1::::<><><>0<>0<><>::
+design-overview.md::TextFile/TextFile::-1::1750528305::0::1::::<><><>0<>0<><>::
+zone-notes.md::TextFile/TextFile::-1::1750529568::0::1::::<><><>0<>0<><>::
+::res://player/::1750635619
+mushnub.gd::GDScript::6976337009622093660::1750635783::0::1::::<>CharacterBody3D<><>0<>0<><>::
+mushnub.tscn::PackedScene::625607452636108720::1750635619::0::1::::<><><>0<>0<><>::uid://bwu2k8fuhsglm::::res://assets/Ultimate Monsters/Blob/Mushnub.gltf<>uid://c6nnisq2yxbng::::res://player/mushnub.gd<>uid://bpquv61xeepud::::res://scripts/CameraController.gd
+::res://scenes/::1750603035
+main.tscn::PackedScene::5745054349539097628::1750635922::0::1::::<><><>0<>0<><>::uid://i6bws3aq3mmi::::res://player/mushnub.tscn
+::res://scripts/::1750635107
+CameraController.gd::GDScript::3473536893295179943::1750635107::0::1::::<>SpringArm3D<><>0<>0<><>::

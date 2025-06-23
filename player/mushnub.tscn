@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://i6bws3aq3mmi"]
+[gd_scene load_steps=5 format=3 uid="uid://i6bws3aq3mmi"]
 
 [ext_resource type="PackedScene" uid="uid://bwu2k8fuhsglm" path="res://assets/Ultimate Monsters/Blob/Mushnub.gltf" id="1_bv17i"]
+[ext_resource type="Script" uid="uid://c6nnisq2yxbng" path="res://player/mushnub.gd" id="1_sgr0o"]
+[ext_resource type="Script" uid="uid://bpquv61xeepud" path="res://scripts/CameraController.gd" id="3_sgr0o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gx463"]
+height = 1.3
 
 [node name="Mushnub" type="CharacterBody3D"]
+script = ExtResource("1_sgr0o")
 
 [node name="Mushnub" parent="." instance=ExtResource("1_bv17i")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.377489, 0, -1.87343)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_gx463")
+
+[node name="CameraRig" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+spring_length = 6.0
+margin = 0.1
+script = ExtResource("3_sgr0o")
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraRig"]
+current = true

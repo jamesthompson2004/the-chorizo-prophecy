@@ -1,2 +1,3 @@
-res://scenes/main.tscn
 res://player/mushnub.tscn
+res://player/mushnub.gd
+res://scripts/CameraController.gd

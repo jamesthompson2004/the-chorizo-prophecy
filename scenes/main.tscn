@@ -1,27 +1,151 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn37g840fkbii"]
+[gd_scene load_steps=17 format=3 uid="uid://cn37g840fkbii"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_sgp6g"]
+[ext_resource type="PackedScene" uid="uid://i6bws3aq3mmi" path="res://player/mushnub.tscn" id="1_o5qli"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ProceduralSkyMaterial_1")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.4, 0.3, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
+material = SubResource("StandardMaterial3D_ground")
 size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_walls"]
+albedo_color = Color(0.823529, 0.392157, 0.470588, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall_north"]
+material = SubResource("StandardMaterial3D_walls")
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall_north"]
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall_south"]
+material = SubResource("StandardMaterial3D_walls")
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall_south"]
+size = Vector3(100, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall_east"]
+material = SubResource("StandardMaterial3D_walls")
+size = Vector3(1, 10, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall_east"]
+size = Vector3(1, 10, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall_west"]
+material = SubResource("StandardMaterial3D_walls")
+size = Vector3(1, 10, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall_west"]
+size = Vector3(1, 10, 100)
 
 [node name="Main" type="Node3D"]
 
-[node name="Ground" type="MeshInstance3D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 10, 0)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_sgp6g")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_o5qli")
 
 [node name="Walls" type="Node3D" parent="."]
 
-[node name="Wall_North" type="MeshInstance3D" parent="Walls"]
+[node name="Wall_North" type="StaticBody3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -50)
 
-[node name="Wall_South" type="MeshInstance3D" parent="Walls"]
+[node name="WallMesh" type="MeshInstance3D" parent="Walls/Wall_North"]
+mesh = SubResource("BoxMesh_wall_north")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall_North"]
+shape = SubResource("BoxShape3D_wall_north")
+
+[node name="Wall_South" type="StaticBody3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 50)
 
-[node name="Wall_East" type="MeshInstance3D" parent="Walls"]
+[node name="WallMesh" type="MeshInstance3D" parent="Walls/Wall_South"]
+mesh = SubResource("BoxMesh_wall_south")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall_South"]
+shape = SubResource("BoxShape3D_wall_south")
+
+[node name="Wall_East" type="StaticBody3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 5, 0)
 
-[node name="Wall_West" type="MeshInstance3D" parent="Walls"]
+[node name="WallMesh" type="MeshInstance3D" parent="Walls/Wall_East"]
+mesh = SubResource("BoxMesh_wall_east")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall_East"]
+shape = SubResource("BoxShape3D_wall_east")
+
+[node name="Wall_West" type="StaticBody3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 5, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 10, 10)
+[node name="WallMesh" type="MeshInstance3D" parent="Walls/Wall_West"]
+mesh = SubResource("BoxMesh_wall_west")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall_West"]
+shape = SubResource("BoxShape3D_wall_west")
+
+[node name="Mushnub" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="TestObstacles" type="Node3D" parent="."]
+
+[node name="Platform1" type="StaticBody3D" parent="TestObstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestObstacles/Platform1"]
+mesh = SubResource("BoxMesh_wall_north")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestObstacles/Platform1"]
+shape = SubResource("BoxShape3D_wall_north")
+
+[node name="Platform2" type="StaticBody3D" parent="TestObstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.5, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestObstacles/Platform2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_wall_north")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestObstacles/Platform2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_wall_north")
+
+[node name="Ramp" type="StaticBody3D" parent="TestObstacles"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 20, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestObstacles/Ramp"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_wall_north")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestObstacles/Ramp"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("BoxShape3D_wall_north")
